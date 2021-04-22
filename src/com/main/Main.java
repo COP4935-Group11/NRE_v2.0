@@ -7,10 +7,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -51,6 +54,29 @@ public class Main {
 	 private static final String BROWSER = "browserType";
 	 private static final String REPORT = "reportFolder";
 	 private static final String FAILURE = "failureHandling";
+	 private static final String RETRY = "retry";
+	 private static final String STATUS_DELAY = "statusDelay";
+	 private static final String TEST_SUITE_COLLECTION = "testSuiteCollectionPath";
+	 private static final String BROWSER_TYPE = "browserType";
+	 
+	 // Do not use these the dont work..
+	 private static final String RETRY_FAILED_TEST_CASES = "retryFailedTestCases";
+	 private static final String RETRY_FAILED_TEST_CASES_TEST_DATA = "retryFailedTestCasesTestData";
+	 private static final String RETRY_STRATEGY = "retryStrategy";
+	 private static final String REPORT_FOLDER = "reportFolder";
+	 private static final String REPORT_FILE_NAME = "reportFileName";
+	 private static final String SEND_MAIL = "sendMail";
+	 private static final String REMOTE_WEB_DRIVER_TYPE = "remoteWebDriverType";
+	 private static final String REMOTE_WEB_DRIVER_URL = "remoteWebDriverUrl";
+	 private static final String DEVICE_ID = "deviceId";
+	 private static final String BUILD_URL = "buildURL";
+	 private static final String MAX_RESPONSE_SIZE = "maxResponseSize";
+	 private static final String API_KEY = "apiKey";
+	 private static final String RUN_MODE = "runMode";
+	 ///////////
+	 
+	 
+	 
 	 private static int maxLength = 0;
 	 
 		static {
@@ -327,6 +353,9 @@ public class Main {
 		
 		String line = null;
 		String[] commands = {};
+		command = command.replace("./" + new String(DatatypeConverter.parseHexBinary("6b6174616c6f6e63"), StandardCharsets.UTF_8) + " ", "");
+		command = command.replace("-noSplash ", "");
+		command = command.replace(TEST_SUITE_COLLECTION, TEST_SUITE);
 			
 		if(RunConfiguration.getPlatform().equals(OSType.WINDOWS)) {
 			line = command.replace(File.separator, StringConstants.ID_SEPARATOR); 
@@ -418,6 +447,24 @@ public class Main {
 		else if(line.contains(BROWSER)) return Boolean.TRUE;
 		else if(line.contains(REPORT)) return Boolean.TRUE;
 		else if(line.contains(FAILURE)) return Boolean.TRUE;
+		else if(line.contains(RETRY)) return Boolean.TRUE;
+		else if(line.contains(STATUS_DELAY)) return Boolean.TRUE;
+		else if(line.contains(TEST_SUITE_COLLECTION)) return Boolean.TRUE;
+		else if(line.contains(BROWSER_TYPE)) return Boolean.TRUE;
+		else if(line.contains(RETRY_FAILED_TEST_CASES)) return Boolean.TRUE;
+		else if(line.contains(RETRY_FAILED_TEST_CASES_TEST_DATA)) return Boolean.TRUE;
+		else if(line.contains(RETRY_STRATEGY)) return Boolean.TRUE;
+		else if(line.contains(REPORT_FOLDER)) return Boolean.TRUE;
+		else if(line.contains(REPORT_FILE_NAME)) return Boolean.TRUE;
+		else if(line.contains(SEND_MAIL)) return Boolean.TRUE;
+		else if(line.contains(REMOTE_WEB_DRIVER_TYPE)) return Boolean.TRUE;
+		else if(line.contains(REMOTE_WEB_DRIVER_URL)) return Boolean.TRUE;
+		else if(line.contains(DEVICE_ID)) return Boolean.TRUE;
+		else if(line.contains(BUILD_URL)) return Boolean.TRUE;
+		else if(line.contains(MAX_RESPONSE_SIZE)) return Boolean.TRUE;
+		else if(line.contains(API_KEY)) return Boolean.TRUE;
+		else if(line.contains(RUN_MODE)) return Boolean.TRUE;
+		
 		else return Boolean.FALSE;			
 			
 	}
