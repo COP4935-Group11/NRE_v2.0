@@ -64,14 +64,13 @@ public class RunScript {
 			
 			if(m.getAnnotation(SetUp.class) != null) {
 				skipped = m.getAnnotation(SetUp.class).skipped();
-				
-			//System.out.println("skipped = "+ skipped);	//debugging mode			
+						
 	 
 				if(!skipped) { 
-					//System.out.println("TestSuite SetUp->");
 					RunConfiguration.getTestSuiteObj().setCurrentNode(RunConfiguration.getTestSuiteObj().getSuiteCase().createNode("Suite setup").
 							assignCategory(StringConstants.HOOKS_REPORT_TAG));
 					try {
+						System.out.println("Test Suite: " + RunConfiguration.getTestSuiteObj().getName()+ " SETUP");
 						RunConfiguration.getTestSuiteObj().currMethod = "setUp";
 						groovyShell.parse(suiteScript.get()).invokeMethod("setUp", null);
 						
@@ -151,6 +150,7 @@ public class RunScript {
 						}else {
 							
 							try {
+								System.out.println("Test Suite: " + RunConfiguration.getTestSuiteObj().getName()+ " TEARDOWN");
 								RunConfiguration.getTestSuiteObj().currMethod = "teardown";
 								groovyShell.parse(suiteScript.get()).invokeMethod("tearDown", null);
 								
@@ -225,6 +225,8 @@ public class RunScript {
 							.getTestCase().createNode("TestCase SetUp").assignCategory("Hooks"));
 					
 					try {
+
+						System.out.println("Test Suite: " + RunConfiguration.getTestSuiteObj().getName()+ " SETUP TEST CASE");
 						RunConfiguration.getTestSuiteObj().getCurrentTestCase().currMethod = "tsSetup";
 						groovyShell.parse(suiteScript.get()).invokeMethod("setupTestCase", null);
 						
@@ -305,6 +307,8 @@ public class RunScript {
 					}else {
 					
 						try {
+
+							System.out.println("Test Suite: " + RunConfiguration.getTestSuiteObj().getName()+ " TEARDOWN TEST CASE");
 							RunConfiguration.getTestSuiteObj().getCurrentTestCase().currMethod = "tsTeardown";
 							groovyShell.parse(suiteScript.get()).invokeMethod("tearDownTestCase", null);
 							
@@ -391,6 +395,8 @@ public class RunScript {
 										.getTestCase().createNode("setup()").assignCategory(StringConstants.HOOKS_REPORT_TAG));
 								
 								try {
+
+									System.out.println("Test Case: " + RunConfiguration.getTestSuiteObj().getCurrentTestCase().getName()+ " SETUP");
 									RunConfiguration.getTestSuiteObj().getCurrentTestCase().currMethod = "setUp";
 									groovyShell.parse(script).invokeMethod("setup", null);
 									
@@ -483,6 +489,7 @@ public class RunScript {
 							}else {
 															
 								try {
+									System.out.println("Test Case: " + RunConfiguration.getTestSuiteObj().getCurrentTestCase().getName()+ " TEARDOWN");
 									RunConfiguration.getTestSuiteObj().getCurrentTestCase().currMethod = "teardown";
 									groovyShell.parse(script).invokeMethod("teardown", null);
 									
@@ -558,7 +565,9 @@ public class RunScript {
 		RunConfiguration.getTestSuiteObj().setCurrentNode(RunConfiguration.getTestSuiteObj().getTestCase());
 			try
 			{
+				
 
+				System.out.println("Test Case: " + RunConfiguration.getTestSuiteObj().getCurrentTestCase().getName()+ " SCRIPT");
 				RunConfiguration.getTestSuiteObj().getCurrentTestCase().currMethod = "script";
 				groovyShell.evaluate(script);
 				RunConfiguration.getExtent().flush();

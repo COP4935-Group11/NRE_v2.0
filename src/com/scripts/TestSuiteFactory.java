@@ -30,7 +30,7 @@ public class TestSuiteFactory {
 		ArrayList<String> fileContent = new ArrayList<String>(Files.readAllLines(Paths.get(rootScript.toURI()), 
 				StringConstants.STANDARD_CHARSET));
 		ArrayList<String> script = new ArrayList<>();		
-		imports = new ArrayList<>(Arrays.asList(StringConstants.SUITE_IMPORTS));					
+		imports = new ArrayList<>(Arrays.asList(StringConstants.IMPORTS));					
 		
 		Iterator<String> iter = fileContent.iterator();
 		while (iter.hasNext()) {

@@ -482,6 +482,7 @@ public class Main {
 			
         
         for(int i = 0; i < arrOfStr.length; i++) {
+        	System.out.println(arrOfStr[i]);
         	if(arrOfStr[i].contains(PROJECT)) {
         		
         		

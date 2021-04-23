@@ -9,7 +9,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.configuration.RunConfiguration;
 import com.constants.StringConstants;
@@ -28,13 +31,13 @@ public class FeaturesFactory {
 
 		listOfFeatures = getFeaturesFiles();
 		listOfNewFeatures = new ArrayList<>();
-
+		
+		
 		for(File file : listOfFeatures) { 
 			readTags(file);
 			listOfNewFeatures.add(getFeature(file));	
 		}
 		
-		//System.out.println(tagsMap);
 	}
 
 	protected static ArrayList<File> getFeaturesFiles() {
@@ -43,12 +46,26 @@ public class FeaturesFactory {
 
 		String folder = RunConfiguration.getProjectDir().concat(StringConstants.ID_SEPARATOR).
 				concat(StringConstants.FEATURES_SOURCE).concat(StringConstants.ID_SEPARATOR);
-		//System.out.println(folder); //debugging mode
+		
+//		System.out.println(folder); //debugging mode
+		
 		File rootFolder = new File(folder);
-
-		for(File featureFolder : rootFolder.listFiles())			
-			for(File feature : featureFolder.listFiles())			
-				features.add(feature);
+		 List<Path> result = null;
+		    try (Stream<Path> walk = Files.walk(Paths.get(folder))) {
+		        result = walk
+		                .filter(Files::isRegularFile)   // is a file
+		                .filter(p -> p.getFileName().toString().endsWith(".feature"))
+		                .collect(Collectors.toList());
+		}
+		 catch (IOException e) {
+			// TODO Auto-generated catch block
+		}
+	      
+	     for(Path path : result)
+	     {
+	    	 features.add(path.toFile());
+	     }
+	       
 			
 		return features;
 	}
