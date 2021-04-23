@@ -1,0 +1,20 @@
+Apr 23, 2021 12:50:14 AM com.main.Main main
+INFO: Program Started!
+Apr 23, 2021 12:50:15 AM com.configuration.RunConfiguration setFailureHandling
+INFO: defaultFailureHandling set to :STOP_ON_FAILURE
+Apr 23, 2021 12:50:16 AM com.configuration.RunConfiguration setReportRoot
+INFO: reportRoot set to :NRE_Reports/04232021
+Apr 23, 2021 12:50:38 AM com.ucf.pcte.CucumberKW runFeatureFile
+INFO: Starting Cucumber keyword runFeatureFile: temp/features/CreateContact.feature and extracting report to folder: NRE_Reports/04232021/...
+Apr 23, 2021 12:51:09 AM com.driver.DriverFactory cleanAllDrivers
+INFO: Cleaned drivers successfully!
+Apr 23, 2021 12:51:10 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : temp
+Apr 23, 2021 12:51:10 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : Cucumber
+Apr 23, 2021 12:51:11 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : bin/steps13
+Apr 23, 2021 12:51:12 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : bin/internal13
+Apr 23, 2021 12:51:12 AM com.main.Main main
+INFO: COMPLETED in 56s

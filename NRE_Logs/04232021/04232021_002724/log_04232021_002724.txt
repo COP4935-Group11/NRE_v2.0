@@ -1,0 +1,28 @@
+Apr 23, 2021 12:27:24 AM com.main.Main main
+INFO: Program Started!
+Apr 23, 2021 12:27:25 AM com.main.Main validateInput
+SEVERE: Empty command entered.
+Apr 23, 2021 12:27:26 AM com.main.Main validateInput
+SEVERE: Empty command entered.
+Apr 23, 2021 12:27:29 AM com.configuration.RunConfiguration setFailureHandling
+INFO: defaultFailureHandling set to :STOP_ON_FAILURE
+Apr 23, 2021 12:27:30 AM com.configuration.RunConfiguration setReportRoot
+INFO: reportRoot set to :NRE_Reports/04232021
+Apr 23, 2021 12:27:41 AM com.console.RunScript runScript
+SEVERE: Expected condition failed: waiting for presence of element located by: By.xpath: //a[@id='CreateAccountButton'] (tried for 2 second(s) with 500 milliseconds interval)
+Apr 23, 2021 12:27:46 AM com.console.RunScript runScript
+SEVERE: Expected condition failed: waiting for presence of element located by: By.xpath: //a[@id='CreateAccountButton'] (tried for 2 second(s) with 500 milliseconds interval)
+Apr 23, 2021 12:27:51 AM com.console.RunScript runScript
+SEVERE: Expected condition failed: waiting for presence of element located by: By.xpath: //a[@id='CreateAccountButton'] (tried for 2 second(s) with 500 milliseconds interval)
+Apr 23, 2021 12:27:52 AM com.driver.DriverFactory cleanAllDrivers
+INFO: Cleaned drivers successfully!
+Apr 23, 2021 12:27:53 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : temp
+Apr 23, 2021 12:27:54 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : Cucumber
+Apr 23, 2021 12:27:54 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : bin/steps13
+Apr 23, 2021 12:27:55 AM com.util.DirectoryUtils deleteDirectory
+INFO: Deleting dir : bin/internal13
+Apr 23, 2021 12:27:55 AM com.main.Main main
+INFO: COMPLETED in 25s

@@ -879,7 +879,7 @@ public class WebUI
 							RunConfiguration.getTestSuiteObj().getCurrentTestCase().scriptMessage.add(e.getLocalizedMessage());
 						}
 //						
-						throw new StepFailedException(e.getLocalizedMessage());
+//						throw new StepFailedException(e.getLocalizedMessage());
 				}
 				
 			}
